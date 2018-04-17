@@ -5,6 +5,8 @@ from api.views import CustomObtainAuthToken
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
+router.register(r'products', views.ProductViewSet)
+router.register(r'categories', views.CategoryViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
