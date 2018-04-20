@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from api.models import Product, Category
+from api.models import Product, Category, Tag
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -13,9 +13,15 @@ class CategorySerializer(serializers.HyperlinkedModelSerializer):
         model = Category
         fields = ('name',)
 
+class TagSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Tag
+        fields = ('name',)
+
 class ProductSerializer(serializers.HyperlinkedModelSerializer):
     category = CategorySerializer()
+    tag = TagSerializer(many=True)
     class Meta:
         model = Product
-        fields = ('name', 'category')
+        fields = ('id', 'name', 'category', 'tag')
 

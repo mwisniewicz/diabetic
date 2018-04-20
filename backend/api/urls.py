@@ -7,6 +7,7 @@ router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'products', views.ProductViewSet)
 router.register(r'categories', views.CategoryViewSet)
+router.register(r'tags', views.TagViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
