@@ -6,7 +6,13 @@ from api.models import Product, Category, Tag
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ('url', 'username', 'email', 'groups')
+        fields = ('url', 'username', 'email', 'groups', 'password')
+
+        extra_kwargs = {'password' : {'write_only': True, 'required': True}}
+
+    def create(self, validated_data):
+        user = User.objects.cerate_user(**validated_data)
+        return user
 
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
