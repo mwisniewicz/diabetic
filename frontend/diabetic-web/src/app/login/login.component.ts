@@ -43,11 +43,11 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', response['token']);
         this.global.me = response['user'];
         this.router.navigate(['/home']);
-        //console.log('token', response['token']);
+        console.log('token', response['token']);
       },
       error => {
         this.loading = false;
-        //console.log('error', error);
+        console.log('error', error);
       }
     );
   }

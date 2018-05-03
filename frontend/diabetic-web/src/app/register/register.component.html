@@ -20,7 +20,7 @@
     </mat-form-field>
     <br>
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Password" formControlName="password">
+      <input matInput placeholder="Password" formControlName="password" type="password">
       <mat-error *ngIf="userRegister.get('password').hasError('required')">
         Password is <strong>required</strong>
       </mat-error>
@@ -32,6 +32,7 @@
     <button mat-ripple mat-raised-button type="submit" [disabled]="userRegister.invalid || loading" color="accent">Register</button>
   </div>
 </form>
+<mat-spinner *ngIf="loading" color="primary"></mat-spinner>
 <br>
 <button (click)="goToLogin()" mat-raised-button color="primary">Login</button>
 <button mat-raised-button (click)="goHome()">Home</button>

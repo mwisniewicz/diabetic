@@ -1,3 +1,10 @@
 <p>
   Welcome {{ account.username }} !
 </p>
+
+<button mat-ripple mat-raised-button (click)="doLogout()" color="primary">Logout</button>
+
+<div *ngFor="let product of products;">
+  <h4>{{ product.name }}</h4>
+  <p>{{ product.category.name }}</p>
+</div>

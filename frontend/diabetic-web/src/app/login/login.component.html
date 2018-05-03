@@ -21,5 +21,6 @@
   <br>
 </form>
 <br>
-
+<mat-spinner *ngIf="loading" color="primary"></mat-spinner>
+<br>
 <button [routerLink]="['/register']" mat-raised-button color="accent">Register</button>

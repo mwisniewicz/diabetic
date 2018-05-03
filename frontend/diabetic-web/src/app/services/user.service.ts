@@ -15,4 +15,8 @@ export class UserService {
   loginUser(userData: any): Observable<any> {
     return this.http.post(this.baseUrl + 'authenticate/', userData, {headers: this.httpHeaders});
   }
+
+  registerUser(userData: any): Observable<any> {
+    return this.http.post(this.baseUrl + 'users/', userData, {headers: this.httpHeaders});
+  }
 }

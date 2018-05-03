@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
 
   account: User = new User();
   userSub: Subscription;
+  products;
+
   constructor(private global: GlobalService, private router: Router, private productsService: ProductsService) { }
 
   ngOnInit() {
@@ -34,13 +36,20 @@ export class HomeComponent implements OnInit {
 
   getProducts() {
     this.productsService.getProducts().subscribe(
-        products => {
-          console.log('products', products);
+        response => {
+          this.products = response;
         },
         error => {
           console.log('error', error);
         }
     );
+  }
+
+  private doLogout() {
+    this.global.me = new User();
+    localStorage.removeItem('token');
+    localStorage.removeItem('account');
+    this.router.navigate(['/login']);
   }
 
 }
