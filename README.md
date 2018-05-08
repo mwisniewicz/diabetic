@@ -8,29 +8,44 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
+In order to run frontend part you need to install firstly nodejs and npm package manager
 ```
-Give examples
+Get NodeJS and npm from here: https://nodejs.org/en/download/
+```
+, then install Angular CLI:
+```
+npm install -g @angular/cli
+```
+
+In order to run backend you need to install python3, django > 2.0 and django rest api:
+```
+Get python 3 from: https://www.python.org/downloads/
+Get django 2 from: https://www.djangoproject.com/download/
+Get django-rest-api from: http://www.django-rest-framework.org/
 ```
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
+FRONTEND:
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
+Run this command in main folder of angular app in order to install all angular modeules etc:
 
 ```
-until finished
+npm install
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+And then run server
+
+```
+ng serve
+```
+
+BACKEND: 
+In main backend directory run command: 
+```
+pip intall -r requirements.txt
+```
+in order to install all python packages 
 
 ## Built With
 
