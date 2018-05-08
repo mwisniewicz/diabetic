@@ -1,10 +1,66 @@
-<p>
-  Welcome {{ account.username }} !
-</p>
 
+Welcome {{ account.username }}
 <button mat-ripple mat-raised-button (click)="doLogout()" color="primary">Logout</button>
 
-<div *ngFor="let product of products;">
+<div *ngFor="let product of products;" (click)="productClicked(product)" class="clickable">
   <h4>{{ product.name }}</h4>
-  <p>{{ product.category.name }}</p>
+</div>
+<br>
+<div class="container">
+  <h2>Details</h2>
+  <div *ngIf="selectedProduct">
+    <ul>
+      <li>
+        {{ selectedProduct.name }}
+      </li>
+      <li>
+          {{ selectedProduct.category.name }}
+        </li>
+        <li>
+          <ul>
+            <li *ngFor="let tagname of selectedProduct.tag">{{ tagname.name }}</li>
+          </ul>
+        </li>
+    </ul>
+  </div>
+</div>
+<div class="container">
+  <button mat-rippler mat-raised-button (click)="addProduct()" color="accent">Add product</button>
+</div>
+<div class="container" *ngIf="!selectedProduct">
+  <form (ngSubmit)="submitProduct()" [formGroup]="productInput">
+    <div class="form-group">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Name" formControlName="name">
+        <mat-error *ngIf="productInput.get('name').hasError('required')">
+          Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <div formGroupName="category">
+      <mat-form-field class="example-full-width">
+        <mat-select placeholder="Category" formControlName="name">
+          <mat-option *ngFor="let selected of categories" [value]="selected.name">
+            {{ selected.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="productInput.get('category').hasError('required')">
+          Category is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div formArrayName="tag" *ngFor="let item of productInput.get('tag').controls; let i=index">
+      <mat-form-field class="example-full-width" [formGroupName]="i">
+        <input matInput placeholder="Tag" formControlName="name">
+        <mat-error *ngIf="productInput.get('tag').hasError('required')">
+          Tag is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+      <br>
+     
+    </div>
+    <button mat-ripple mat-raised-button type="submit" [disabled]="productInput.invalid">Add</button>
+    <br>
+  </form>
 </div>

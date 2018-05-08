@@ -1,0 +1,22 @@
+h1, form, input, label, span {
+    font-weight: 200;
+    color: #FFF;
+}
+
+.login-button {
+    color: #fff;
+    font-weight: 200;
+    background: transparent;
+}
+
+.register-button{
+    background-color: rgba(255,255,255,0.5);
+    color: #fff;
+    font-weight: 300;
+}
+
+.home-button {
+    background-color: rgba(255,255,255,0.3);
+    color: #fff;
+    font-weight: 300;
+}

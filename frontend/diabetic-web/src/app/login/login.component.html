@@ -1,4 +1,4 @@
-<h1>Login</h1>
+<h1>SIGN IN</h1>
 <form (ngSubmit)="onLogin()" [formGroup]="userLogin">
   <div class="form-group">
     <mat-form-field class="example-full-width">
@@ -17,10 +17,10 @@
       </mat-error>
     </mat-form-field>
   </div>
-  <button mat-ripple mat-raised-button type="submit" [disabled]="userLogin.invalid || loading" color="primary">Login</button>
+  <button class="login-button" mat-ripple mat-raised-button type="submit" [disabled]="userLogin.invalid || loading">Sign In</button>
   <br>
 </form>
 <br>
 <mat-spinner *ngIf="loading" color="primary"></mat-spinner>
 <br>
-<button [routerLink]="['/register']" mat-raised-button color="accent">Register</button>
+<button [routerLink]="['/register']" mat-raised-button class="register_button">Sign Up</button>

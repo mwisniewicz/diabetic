@@ -4,14 +4,14 @@ from django.shortcuts import render
 
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
-from api.serializers import UserSerializer, ProductSerializer, CategorySerializer, TagSerializer
+from api.serializers import UserSerializer, ProductSerializer, CategorySerializer, TagSerializer, UserManagerSerializer
 from rest_framework.authentication import TokenAuthentication, SessionAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 
-from api.models import Product, Category, Tag
+from api.models import Product, Category, Tag, UserManager
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -20,6 +20,9 @@ class UserViewSet(viewsets.ModelViewSet):
     #authentication_classes = (TokenAuthentication, SessionAuthentication)
     #permission_classes = (IsAuthenticated,)
 
+class UserManagerViewSet(viewsets.ModelViewSet):
+    queryset = UserManager.objects.all()
+    serializer_class = UserManagerSerializer
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer

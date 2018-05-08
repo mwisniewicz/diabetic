@@ -1,10 +1,15 @@
 from django.contrib import admin
-from api.models import Product, Category, Tag
+from api.models import Product, Category, Tag, UserManager
+
+@admin.register(UserManager)
+class UserManagerAdmin(admin.ModelAdmin):
+	fields = ('user', 'username', 'date_of_birth', 'description', 'image')
+	list_display = ['user', 'username', 'date_of_birth', 'description', 'image', 'get_age']
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    fields = ('name', 'category', 'carbs', 'proteins', 'fats', 'weight', 'glycemic_index', 'tag')
-    list_display = ['name', 'category', 'weight', 'carbs', 'proteins', 'fats', 'get_carbohydrate_exchange']
+    fields = ('name', 'category', 'tag')
+    list_display = ['name', 'category']
     search_fields = ('name', 'category')
 
 @admin.register(Category)

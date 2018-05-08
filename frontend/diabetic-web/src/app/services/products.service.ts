@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { Product } from '../models/product';
 
 @Injectable()
 export class ProductsService {
@@ -14,6 +15,14 @@ export class ProductsService {
 
   getProducts(): Observable<any> {
     return this.http.get(this.baseUrl + 'products/', this.getAuthHeaders());
+  }
+
+  addProduct(product: Product): Observable<any> {
+    return this.http.post(this.baseUrl + 'products/', product, this.getAuthHeaders());
+  }
+
+  getCategories(): Observable<any> {
+    return this.http.get(this.baseUrl + 'categories/', this.getAuthHeaders());
   }
 
   private getAuthHeaders() {
